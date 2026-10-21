@@ -1,0 +1,27 @@
+version: 1
+
+udp:
+  # ai_server 当前使用 9300；网关开发联调使用 9301。
+  listen: "127.0.0.1:9301"
+  max_packet_bytes: 65535
+
+web:
+  listen: "127.0.0.1:8766"
+  websocket_path: "/ws/linkage"
+  client_queue_size: 64
+  allowed_origins:
+    - "http://localhost:5173"
+
+database:
+  path: "data/linkage.db"
+  busy_timeout_ms: 5000
+  journal_mode: "WAL"
+
+protocol:
+  text_encoding: "GB2312"
+  event_timezone: "Asia/Shanghai"
+  dedup_window_ms: 3000
+
+logging:
+  level: "INFO"
+  format: "text"
